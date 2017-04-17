@@ -1,3 +1,11 @@
 apply plugin: 'java'
 apply plugin: 'application'
-mainClassName = "MySecondProgram"
+mainClassName = "ua.stqa.pft.firstassignment.MySecondProgram"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.testng:testng:6.11'
+}
