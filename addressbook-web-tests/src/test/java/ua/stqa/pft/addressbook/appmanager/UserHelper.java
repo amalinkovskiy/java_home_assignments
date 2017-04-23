@@ -20,8 +20,8 @@ public class UserHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-    public void gotoUsersPage() {
-        click(By.linkText("home page"));
+    public void returnToUsersPage() {
+        click(By.linkText("home"));
     }
 
 
@@ -40,5 +40,24 @@ public class UserHelper extends HelperBase {
         type(By.name("fax"), userData.getFax());
         type(By.name("email"), userData.getEmail());
 
+    }
+
+    public void selectUser() {
+        click(By.name("selected[]"));
+
+    }
+
+    public void deleteSelectedUsers() {
+        click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+        wd.switchTo().alert().accept();
+    }
+
+    public void editFirstUser() {
+        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+
+    }
+
+    public void submitUserModification() {
+        click(By.xpath("//div[@id='content']/form[1]/input[22]"));
     }
 }
