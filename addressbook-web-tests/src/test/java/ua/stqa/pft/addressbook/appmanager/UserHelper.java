@@ -1,6 +1,7 @@
 package ua.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ua.stqa.pft.addressbook.model.UserData;
 
@@ -8,7 +9,7 @@ import ua.stqa.pft.addressbook.model.UserData;
  * Created by amalinkovskiy on 4/23/2017.
  */
 public class UserHelper extends HelperBase {
-    public UserHelper(FirefoxDriver wd) {
+    public UserHelper(WebDriver wd) {
         super(wd);
     }
 
