@@ -13,7 +13,7 @@ public class UserData {
     private final String work;
     private final String fax;
     private final String email;
-    private String group;
+    private final String group;
 
     public UserData(String firstname, String middlename, String lastname, String nickname, String title, String company, String address, String home, String mobile, String work, String fax, String email, String group) {
         this.firstname = firstname;
