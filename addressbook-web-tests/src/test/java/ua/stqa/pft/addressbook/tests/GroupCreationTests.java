@@ -5,6 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ua.stqa.pft.addressbook.model.GroupData;
 
+import java.util.List;
+
 
 public class GroupCreationTests extends TestBase {
 
@@ -13,13 +15,13 @@ public class GroupCreationTests extends TestBase {
     public void testGroupCreation() {
 
         app.getNavigationHelper().gotoGroupPage();
-        int before = app.getGroupHelper().getGroupCount();
+        List<GroupData> before = app.getGroupHelper().getGrouplist();
         app.getGroupHelper().initGroupCreation();
         app.getGroupHelper().fillGroupForm(new GroupData("test1", null, "create", "[none]"));
         app.getGroupHelper().submitGroupCreation();
         app.getGroupHelper().returnToGroupPage();
-        int after = app.getGroupHelper().getGroupCount();
-        Assert.assertEquals(after, before + 1);
+        List<GroupData> after = app.getGroupHelper().getGrouplist();
+        Assert.assertEquals(after.size(), before.size() + 1);
     }
 
 }
