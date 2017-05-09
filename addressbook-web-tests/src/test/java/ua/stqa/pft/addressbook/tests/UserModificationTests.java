@@ -1,5 +1,6 @@
 package ua.stqa.pft.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ua.stqa.pft.addressbook.model.GroupData;
 import ua.stqa.pft.addressbook.model.UserData;
@@ -20,10 +21,16 @@ public class UserModificationTests extends TestBase {
         if (! app.getUserHelper().isThereAUser()){
             app.getUserHelper().createUser(new UserData("Alexander", "B", "Malinkovskiy", "amalinkovskiy", "title", "company", "address", "home", "(777)777-88-99", null, "fax", "a@a.a", "test1"), true);
         }
+
+        int before = app.getUserHelper().getUserCount();
         app.getUserHelper().editFirstUser();
         app.getUserHelper().fillFormWithData(new UserData("Alexandem", "B", "Malinkovskiy", "amalinkovskiy", "title", "company", "address", "home", "(777)777-88-99", "work", null, "a@a.a", null), false);
         app.getUserHelper().submitUserModification();
         app.getUserHelper().returnToUsersPage();
+
+        int after = app.getUserHelper().getUserCount();
+
+        Assert.assertEquals(after, before);
 
     }
 

@@ -1,5 +1,6 @@
 package ua.stqa.pft.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ua.stqa.pft.addressbook.model.GroupData;
 import ua.stqa.pft.addressbook.model.UserData;
@@ -20,9 +21,14 @@ public class UserDeletionTests extends TestBase {
         if (! app.getUserHelper().isThereAUser()){
             app.getUserHelper().createUser(new UserData("Alexander", "B", "Malinkovskiy", "amalinkovskiy", "title", "company", "address", "home", "(777)777-88-99", null, "fax", "a@a.a", "test1"), true);
         }
+        int before = app.getUserHelper().getUserCount();
         app.getUserHelper().selectUser();
         app.getUserHelper().deleteSelectedUsers();
         app.getUserHelper().returnToUsersPage();
+
+        int after = app.getUserHelper().getUserCount();
+
+        Assert.assertEquals(after, before - 1);
 
     }
 }
