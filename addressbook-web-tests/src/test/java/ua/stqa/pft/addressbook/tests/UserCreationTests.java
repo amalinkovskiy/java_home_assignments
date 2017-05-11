@@ -14,11 +14,11 @@ public class UserCreationTests extends TestBase {
     @Test (enabled = false)
     public void testUserCreation() {
 
-        app.getNavigationHelper().gotoGroupPage();
-        if (! app.getGroupHelper().isThereAGroup()){
-            app.getGroupHelper().createGroup(new GroupData("test1", null, "old", "[none]"));
+        app.goTo().GroupPage();
+        if (! app.group().isThereAGroup()){
+            app.group().create(new GroupData().withName("test1").withFooter("old").withGroup("[none]"));
         }
-        app.getNavigationHelper().gotoUsersPage();
+        app.goTo().gotoUsersPage();
         List<UserData> before = app.getUserHelper().getUserList();
 
         app.getUserHelper().initNewUserCreation();

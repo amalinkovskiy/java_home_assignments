@@ -15,12 +15,12 @@ public class UserModificationTests extends TestBase {
 
     @Test (enabled = false)
     public void testUserModification() {
-        app.getNavigationHelper().gotoGroupPage();
-        if (! app.getGroupHelper().isThereAGroup()){
-            app.getGroupHelper().createGroup(new GroupData("test1", null, "old", "[none]"));
+        app.goTo().GroupPage();
+        if (! app.group().isThereAGroup()){
+            app.group().create(new GroupData().withName("test1").withFooter("old").withGroup("[none]"));
         }
 
-        app.getNavigationHelper().gotoUsersPage();
+        app.goTo().gotoUsersPage();
         if (! app.getUserHelper().isThereAUser()){
             app.getUserHelper().createUser(new UserData("Alexander", "B", "Malinkovskiy", "amalinkovskiy", "title", "company", "address", "home", "(777)777-88-99", null, "fax", "a@a.a", "test1"), true);
         }
