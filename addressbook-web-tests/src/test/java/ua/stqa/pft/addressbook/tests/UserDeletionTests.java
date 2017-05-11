@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class UserDeletionTests extends TestBase {
 
-    @Test
+    @Test (enabled =  false)
     public void testUserDeletion() {
 
         app.getNavigationHelper().gotoGroupPage();

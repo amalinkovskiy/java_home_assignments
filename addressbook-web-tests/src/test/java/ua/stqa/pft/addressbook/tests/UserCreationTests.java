@@ -11,7 +11,7 @@ import java.util.List;
 
 public class UserCreationTests extends TestBase {
 
-    @Test
+    @Test (enabled = false)
     public void testUserCreation() {
 
         app.getNavigationHelper().gotoGroupPage();

@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class UserModificationTests extends TestBase {
 
-    @Test
+    @Test (enabled = false)
     public void testUserModification() {
         app.getNavigationHelper().gotoGroupPage();
         if (! app.getGroupHelper().isThereAGroup()){
