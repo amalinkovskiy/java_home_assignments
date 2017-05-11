@@ -1,6 +1,7 @@
 package ua.stqa.pft.addressbook.model;
 
 public class UserData {
+    private int id;
     private final String firstname;
     private final String middlename;
     private final String lastname;
@@ -15,7 +16,25 @@ public class UserData {
     private final String email;
     private final String group;
 
+    public UserData(int id, String firstname, String middlename, String lastname, String nickname, String title, String company, String address, String home, String mobile, String work, String fax, String email, String group) {
+        this.id = id;
+        this.firstname = firstname;
+        this.middlename = middlename;
+        this.lastname = lastname;
+        this.nickname = nickname;
+        this.title = title;
+        this.company = company;
+        this.address = address;
+        this.home = home;
+        this.mobile = mobile;
+        this.work = work;
+        this.fax = fax;
+        this.email = email;
+        this.group = group;
+    }
+
     public UserData(String firstname, String middlename, String lastname, String nickname, String title, String company, String address, String home, String mobile, String work, String fax, String email, String group) {
+        this.id = Integer.MAX_VALUE;
         this.firstname = firstname;
         this.middlename = middlename;
         this.lastname = lastname;
@@ -75,11 +94,49 @@ public class UserData {
         return fax;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public String getGroup() {
         return group;
+    }
+
+    @Override
+    public String toString() {
+        return "UserData{" +
+                "id='" + id + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserData userData = (UserData) o;
+
+        if (firstname != null ? !firstname.equals(userData.firstname) : userData.firstname != null) return false;
+        if (lastname != null ? !lastname.equals(userData.lastname) : userData.lastname != null) return false;
+        return address != null ? address.equals(userData.address) : userData.address == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstname != null ? firstname.hashCode() : 0;
+        result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        return result;
     }
 }
