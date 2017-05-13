@@ -56,6 +56,10 @@ public class GroupData {
                 '}';
     }
 
+    public String getGroup() {
+        return group;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -63,15 +67,14 @@ public class GroupData {
 
         GroupData groupData = (GroupData) o;
 
+        if (id != groupData.id) return false;
         return name != null ? name.equals(groupData.name) : groupData.name == null;
     }
 
     @Override
     public int hashCode() {
-        return name != null ? name.hashCode() : 0;
-    }
-
-    public String getGroup() {
-        return group;
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
     }
 }
