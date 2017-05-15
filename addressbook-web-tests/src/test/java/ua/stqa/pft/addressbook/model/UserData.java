@@ -1,54 +1,20 @@
 package ua.stqa.pft.addressbook.model;
 
 public class UserData {
-    private int id;
-    private final String firstname;
-    private final String middlename;
-    private final String lastname;
-    private final String nickname;
-    private final String title;
-    private final String company;
-    private final String address;
-    private final String home;
-    private final String mobile;
-    private final String work;
-    private final String fax;
-    private final String email;
-    private final String group;
-
-    public UserData(int id, String firstname, String middlename, String lastname, String nickname, String title, String company, String address, String home, String mobile, String work, String fax, String email, String group) {
-        this.id = id;
-        this.firstname = firstname;
-        this.middlename = middlename;
-        this.lastname = lastname;
-        this.nickname = nickname;
-        this.title = title;
-        this.company = company;
-        this.address = address;
-        this.home = home;
-        this.mobile = mobile;
-        this.work = work;
-        this.fax = fax;
-        this.email = email;
-        this.group = group;
-    }
-
-    public UserData(String firstname, String middlename, String lastname, String nickname, String title, String company, String address, String home, String mobile, String work, String fax, String email, String group) {
-        this.id = Integer.MAX_VALUE;
-        this.firstname = firstname;
-        this.middlename = middlename;
-        this.lastname = lastname;
-        this.nickname = nickname;
-        this.title = title;
-        this.company = company;
-        this.address = address;
-        this.home = home;
-        this.mobile = mobile;
-        this.work = work;
-        this.fax = fax;
-        this.email = email;
-        this.group = group;
-    }
+    private int id = Integer.MAX_VALUE;
+    private String firstname;
+    private String middlename;
+    private String lastname;
+    private String nickname;
+    private String title;
+    private String company;
+    private String address;
+    private String home;
+    private String mobile;
+    private String work;
+    private String fax;
+    private String email;
+    private String group;
 
     public String getFirstname() {
         return firstname;
@@ -98,16 +64,82 @@ public class UserData {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public String getGroup() {
         return group;
+    }
+
+    public UserData withId(int id) {
+        this.id = id;
+        return this;
+    }
+
+    public UserData withFirstname(String firstname) {
+        this.firstname = firstname;
+        return this;
+    }
+
+    public UserData withMiddlename(String middlename) {
+        this.middlename = middlename;
+        return this;
+    }
+
+    public UserData withLastname(String lastname) {
+        this.lastname = lastname;
+        return this;
+    }
+
+    public UserData withNickname(String nickname) {
+        this.nickname = nickname;
+        return this;
+    }
+
+    public UserData withTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public UserData withCompany(String company) {
+        this.company = company;
+        return this;
+    }
+
+    public UserData withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public UserData withHome(String home) {
+        this.home = home;
+        return this;
+    }
+
+    public UserData withMobile(String mobile) {
+        this.mobile = mobile;
+        return this;
+    }
+
+    public UserData withWork(String work) {
+        this.work = work;
+        return this;
+    }
+
+    public UserData withFax(String fax) {
+        this.fax = fax;
+        return this;
+    }
+
+    public UserData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public UserData withGroup(String group) {
+        this.group = group;
+        return this;
     }
 
     @Override
@@ -127,6 +159,7 @@ public class UserData {
 
         UserData userData = (UserData) o;
 
+        if (id != userData.id) return false;
         if (firstname != null ? !firstname.equals(userData.firstname) : userData.firstname != null) return false;
         if (lastname != null ? !lastname.equals(userData.lastname) : userData.lastname != null) return false;
         return address != null ? address.equals(userData.address) : userData.address == null;
@@ -134,7 +167,8 @@ public class UserData {
 
     @Override
     public int hashCode() {
-        int result = firstname != null ? firstname.hashCode() : 0;
+        int result = id;
+        result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         return result;

@@ -7,8 +7,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import ua.stqa.pft.addressbook.model.UserData;
+import ua.stqa.pft.addressbook.model.Users;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,7 +32,7 @@ public class UserHelper extends HelperBase {
     }
 
 
-    public void     fillFormWithData(UserData userData, boolean creation) {
+    public void fillFormWithData(UserData userData, boolean creation) {
 
         type(By.name("firstname"), userData.getFirstname());
         type(By.name("middlename"), userData.getMiddlename());
@@ -58,13 +58,17 @@ public class UserHelper extends HelperBase {
         wd.findElements(By.name("selected[]")).get(index).click();
     }
 
+    public void selectUserById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    }
+
     public void deleteSelectedUsers() {
         click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
         wd.switchTo().alert().accept();
     }
 
-    public void editParticularUser(int index ) {
-        wd.findElements(By.xpath("//input[@name='selected[]']/../../td[8]/a")).get(index).click();
+    public void editParticularUserById(int id) {
+        wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
 
     }
 
@@ -73,10 +77,30 @@ public class UserHelper extends HelperBase {
         click(By.xpath("//div[@id='content']/form[1]/input[22]"));
     }
 
-    public void createUser(UserData user, boolean b) {
+    public void create(UserData user, boolean b) {
 
         initNewUserCreation();
         fillFormWithData(user, b);
+        submitUserCreation();
+        returnToUsersPage();
+    }
+
+    public void modify(UserData user) {
+        editParticularUserById(user.getId());
+        fillFormWithData(user, false);
+        submitUserModification();
+        returnToUsersPage();
+    }
+
+    public void delete(UserData user) {
+        selectUserById(user.getId());
+        deleteSelectedUsers();
+        returnToUsersPage();
+    }
+
+    public void create(UserData user) {
+        initNewUserCreation();
+        fillFormWithData(user, true);
         submitUserCreation();
         returnToUsersPage();
     }
@@ -89,9 +113,9 @@ public class UserHelper extends HelperBase {
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    public List<UserData> getUserList() {
+    public Users all() {
 
-        List<UserData> users = new ArrayList<UserData>();
+        Users users = new Users();
         List<WebElement> elements = wd.findElements(By.xpath("//input[@name='selected[]']/../.."));
 
         for (WebElement element : elements) {
@@ -99,10 +123,10 @@ public class UserHelper extends HelperBase {
             String FirstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
             String address = element.findElement(By.cssSelector("td:nth-child(4)")).getText();
             int id = Integer.parseInt(element.findElement(By.cssSelector("td:nth-child(1) > input")).getAttribute("value"));
-            UserData user = new UserData(id, FirstName, null, LastName, null, null, null, address, null, null, null, null, null,"[none]");
-            users.add(user);
-        }
+            UserData user = new UserData().withId(id).withFirstname(FirstName).withLastname(LastName).
+                    withAddress(address).withGroup("[none]");
+            users.add(user);        }
 
-        return  users;
+        return users;
     }
 }

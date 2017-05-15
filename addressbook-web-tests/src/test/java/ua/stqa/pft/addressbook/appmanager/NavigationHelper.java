@@ -14,7 +14,7 @@ public class NavigationHelper extends HelperBase {
         super(wd);
     }
 
-    public void GroupPage() {
+    public void groupPage() {
         if (isElementPresent(By.tagName("h1"))
                 && wd.findElement(By.tagName("h1")).equals("Groups")
                 && isElementPresent(By.name("new"))){
@@ -23,7 +23,7 @@ public class NavigationHelper extends HelperBase {
         click(By.linkText("groups"));
     }
 
-    public void gotoUsersPage() {
+    public void usersPage() {
         if (isElementPresent(By.id("maintable"))) {
             return;
         }
