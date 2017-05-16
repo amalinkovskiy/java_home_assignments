@@ -11,14 +11,18 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class GroupCreationTests extends TestBase {
 
 
-    @Test (enabled =  false)
+    @Test
     public void testGroupCreation() {
 
 
         app.goTo().groupPage();
+
         Groups before = app.group().all();
-        GroupData group = new GroupData().withName("test3").withFooter("create").withGroup("[none]");
-        app.group().create(group);
+
+            GroupData group = new GroupData().withName("test3").withFooter("create").withGroup("[none]");
+            app.group().create(group);
+
+     
         Groups after = app.group().all();
         assertThat(after.size(), equalTo(before.size() + 1));
 
@@ -27,8 +31,5 @@ public class GroupCreationTests extends TestBase {
                 before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
 
     }
-
-
-
 
 }

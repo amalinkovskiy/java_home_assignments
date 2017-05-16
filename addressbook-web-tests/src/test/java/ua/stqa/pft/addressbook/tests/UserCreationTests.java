@@ -22,7 +22,7 @@ public class UserCreationTests extends TestBase {
 
     }
 
-        @Test
+        @Test (enabled = false)
     public void testUserCreation() {
 
         Users before = app.user().all();
