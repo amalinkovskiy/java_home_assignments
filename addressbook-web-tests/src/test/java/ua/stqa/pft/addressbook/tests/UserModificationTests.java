@@ -31,7 +31,7 @@ public class UserModificationTests extends TestBase {
         }
     }
 
-    @Test (enabled = false)
+    @Test
     public void testUserModification() {
 
         Users before = app.user().all();

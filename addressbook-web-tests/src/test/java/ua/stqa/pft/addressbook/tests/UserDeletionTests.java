@@ -31,7 +31,7 @@ public class UserDeletionTests extends TestBase {
 
     }
 
-    @Test (enabled = false)
+    @Test
     public void testUserDeletion() {
 
         Users before = app.user().all();

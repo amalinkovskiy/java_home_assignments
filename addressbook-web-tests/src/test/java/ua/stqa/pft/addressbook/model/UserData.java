@@ -16,6 +16,17 @@ public class UserData {
     private String email;
     private String group;
 
+    public String getAllPhones() {
+        return allPhones;
+    }
+
+    public UserData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
+
+    private String allPhones;
+
     public String getFirstname() {
         return firstname;
     }

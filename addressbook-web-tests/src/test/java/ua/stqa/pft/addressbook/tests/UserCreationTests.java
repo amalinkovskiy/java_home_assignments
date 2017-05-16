@@ -22,8 +22,8 @@ public class UserCreationTests extends TestBase {
 
     }
 
-        @Test (enabled = false)
-    public void testUserCreation() {
+        @Test
+        public void testUserCreation() {
 
         Users before = app.user().all();
         UserData user = new UserData().withFirstname("Alexander").withMiddlename("B").withLastname("Malinkovskiy")

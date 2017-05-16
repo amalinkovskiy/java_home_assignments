@@ -116,17 +116,35 @@ public class UserHelper extends HelperBase {
     public Users all() {
 
         Users users = new Users();
-        List<WebElement> elements = wd.findElements(By.xpath("//input[@name='selected[]']/../.."));
+        List<WebElement> rows = wd.findElements(By.name("entry"));
 
-        for (WebElement element : elements) {
-            String LastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
-            String FirstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-            String address = element.findElement(By.cssSelector("td:nth-child(4)")).getText();
-            int id = Integer.parseInt(element.findElement(By.cssSelector("td:nth-child(1) > input")).getAttribute("value"));
+        for (WebElement row : rows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+            String LastName = cells.get(1).getText();
+            String FirstName = cells.get(2).getText();
+            String address = cells.get(3).getText();
+
+            String allPhones = cells.get(5).getText();
+
             UserData user = new UserData().withId(id).withFirstname(FirstName).withLastname(LastName).
-                    withAddress(address).withGroup("[none]");
+                    withAddress(address).withGroup("[none]").withAllPhones(allPhones);
             users.add(user);        }
 
         return users;
+    }
+
+    public UserData infoFromEditForm(UserData user) {
+        editParticularUserById(user.getId());
+        String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+        String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+        String home = wd.findElement(By.name("home")).getAttribute("value");
+        String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+        String work = wd.findElement(By.name("work")).getAttribute("value");
+        wd.navigate().back();
+
+        return new UserData().withId(user.getId()).withFirstname(firstname).withLastname(lastname)
+                .withHome(home).withMobile(mobile).withWork(work);
+
     }
 }
