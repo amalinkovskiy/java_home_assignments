@@ -14,18 +14,20 @@ public class UserData {
     private String work;
     private String fax;
     private String email;
+    private String email2;
+    private String email3;
     private String group;
+    private String allPhones;
+    private String allEmails;
 
     public String getAllPhones() {
         return allPhones;
     }
 
-    public UserData withAllPhones(String allPhones) {
-        this.allPhones = allPhones;
-        return this;
+    public String getAllEmails() {
+        return allEmails;
     }
 
-    private String allPhones;
 
     public String getFirstname() {
         return firstname;
@@ -77,6 +79,14 @@ public class UserData {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getEmail2() {
+        return email2;
+    }
+
+    public String getEmail3() {
+        return email3;
     }
 
     public String getGroup() {
@@ -148,8 +158,28 @@ public class UserData {
         return this;
     }
 
+    public UserData withEmail2(String email2) {
+        this.email2 = email2;
+        return this;
+    }
+
+    public UserData withEmail3(String email3) {
+        this.email3 = email3;
+        return this;
+    }
+
     public UserData withGroup(String group) {
         this.group = group;
+        return this;
+    }
+
+    public UserData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
+
+    public UserData withAllEmails(String allEmails) {
+        this.allEmails = allEmails;
         return this;
     }
 
