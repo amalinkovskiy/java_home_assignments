@@ -72,6 +72,10 @@ public class UserHelper extends HelperBase {
 
     }
 
+    public void viewParticularUserById(int id) {
+        wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
+    }
+
 
     public void submitUserModification() {
         click(By.xpath("//div[@id='content']/form[1]/input[22]"));
@@ -137,17 +141,31 @@ public class UserHelper extends HelperBase {
     public UserData infoFromEditForm(UserData user) {
         editParticularUserById(user.getId());
         String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+        String middlename = wd.findElement(By.name("middlename")).getAttribute("value");
         String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+        String nickname = wd.findElement(By.name("nickname")).getAttribute("value");
+        String company = wd.findElement(By.name("company")).getAttribute("value");
+        String title = wd.findElement(By.name("title")).getAttribute("value");
+        String address = wd.findElement(By.name("address")).getAttribute("value");
         String home = wd.findElement(By.name("home")).getAttribute("value");
         String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
         String work = wd.findElement(By.name("work")).getAttribute("value");
+        String fax = wd.findElement(By.name("fax")).getAttribute("value");
         String email = wd.findElement(By.name("email")).getAttribute("value");
         String email2 = wd.findElement(By.name("email2")).getAttribute("value");
         String email3 = wd.findElement(By.name("email3")).getAttribute("value");
         wd.navigate().back();
 
-        return new UserData().withId(user.getId()).withFirstname(firstname).withLastname(lastname)
-                .withHome(home).withMobile(mobile).withWork(work).withEmail(email).withEmail2(email2).withEmail3(email3);
+        return new UserData().withId(user.getId()).withFirstname(firstname).withMiddlename(middlename)
+                .withLastname(lastname).withNickname(nickname).withCompany(company).withTitle(title)
+                .withAddress(address).withHome(home).withMobile(mobile).withWork(work).withEmail(email)
+                .withEmail2(email2).withEmail3(email3).withFax(fax);
 
+    }
+
+    public String infoFromViewForm(UserData user){
+        viewParticularUserById(user.getId());
+        String content = wd.findElement(By.id("content")).getText();
+        return content;
     }
 }
