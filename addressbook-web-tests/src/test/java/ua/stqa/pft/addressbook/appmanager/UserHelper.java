@@ -86,6 +86,7 @@ public class UserHelper extends HelperBase {
         initNewUserCreation();
         fillFormWithData(user, b);
         submitUserCreation();
+        userCache = null;
         returnToUsersPage();
     }
 
@@ -93,12 +94,14 @@ public class UserHelper extends HelperBase {
         editParticularUserById(user.getId());
         fillFormWithData(user, false);
         submitUserModification();
+        userCache = null;
         returnToUsersPage();
     }
 
     public void delete(UserData user) {
         selectUserById(user.getId());
         deleteSelectedUsers();
+        userCache = null;
         returnToUsersPage();
     }
 
@@ -106,6 +109,7 @@ public class UserHelper extends HelperBase {
         initNewUserCreation();
         fillFormWithData(user, true);
         submitUserCreation();
+        userCache = null;
         returnToUsersPage();
     }
 
@@ -113,13 +117,18 @@ public class UserHelper extends HelperBase {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public int getUserCount() {
+    public int count() {
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    public Users all() {
+    private Users userCache = null;
 
-        Users users = new Users();
+    public Users all() {
+        if (userCache != null){
+            return new Users(userCache);
+        }
+
+        userCache = new Users();
         List<WebElement> rows = wd.findElements(By.name("entry"));
 
         for (WebElement row : rows) {
@@ -133,9 +142,9 @@ public class UserHelper extends HelperBase {
 
             UserData user = new UserData().withId(id).withFirstname(FirstName).withLastname(LastName).
                     withAddress(address).withGroup("[none]").withAllEmails(allEmails).withAllPhones(allPhones);
-            users.add(user);        }
+            userCache.add(user);        }
 
-        return users;
+        return new Users(userCache);
     }
 
     public UserData infoFromEditForm(UserData user) {

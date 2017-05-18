@@ -40,8 +40,8 @@ public class UserModificationTests extends TestBase {
         UserData user = new UserData().withId(modifiedUser.getId()).withFirstname("Sherlock").
                 withLastname("Holmes").withAddress("Baker street");
         app.user().modify(user);
+        assertEquals(app.user().count(), before.size());
         Users after = app.user().all();
-        assertEquals(after.size(), before.size());
         assertThat(after, equalTo(before.without(modifiedUser).withAdded(user)));
 
     }
