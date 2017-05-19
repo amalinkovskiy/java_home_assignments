@@ -1,0 +1,20 @@
+<list>
+  <user>
+    <firstname>First Name 0</firstname>
+    <middlename>Middle 0</middlename>
+    <lastname>Last Name 0</lastname>
+    <email3>test@email.ok</email3>
+  </user>
+  <user>
+    <firstname>First Name 1</firstname>
+    <middlename>Middle 1</middlename>
+    <lastname>Last Name 1</lastname>
+    <email3>test@email.ok</email3>
+  </user>
+  <user>
+    <firstname>First Name 2</firstname>
+    <middlename>Middle 2</middlename>
+    <lastname>Last Name 2</lastname>
+    <email3>test@email.ok</email3>
+  </user>
+</list>
