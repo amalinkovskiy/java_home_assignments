@@ -3,18 +3,27 @@
     "firstname": "First Name 0",
     "middlename": "Middle 0",
     "lastname": "Last Name 0",
-    "email3": "test@email.ok"
+    "nickname": "amalinkovskiy 0",
+    "title": "title",
+    "address": "add",
+    "group": "test1"
   },
   {
     "firstname": "First Name 1",
     "middlename": "Middle 1",
     "lastname": "Last Name 1",
-    "email3": "test@email.ok"
+    "nickname": "amalinkovskiy 1",
+    "title": "title",
+    "address": "add",
+    "group": "test1"
   },
   {
     "firstname": "First Name 2",
     "middlename": "Middle 2",
     "lastname": "Last Name 2",
-    "email3": "test@email.ok"
+    "nickname": "amalinkovskiy 2",
+    "title": "title",
+    "address": "add",
+    "group": "test1"
   }
 ]

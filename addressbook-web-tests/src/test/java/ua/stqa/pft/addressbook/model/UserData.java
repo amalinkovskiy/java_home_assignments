@@ -16,9 +16,12 @@ public class UserData {
     private String middlename;
     @Expose
     private String lastname;
+    @Expose
     private String nickname;
+    @Expose
     private String title;
     private String company;
+    @Expose
     private String address;
     private String home;
     private String mobile;
@@ -28,6 +31,7 @@ public class UserData {
     private String email2;
     @Expose
     private String email3;
+    @Expose
     private String group;
     private String allPhones;
     private String allEmails;
