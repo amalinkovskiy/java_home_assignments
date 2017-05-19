@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="FirstRegressionSuite" verbose="1" >
+    <test name="Users">
+        <classes>
+            <class name="ua.stqa.pft.addressbook.tests.UserCreationTests" />
+        </classes>
+    </test>
+</suite>
