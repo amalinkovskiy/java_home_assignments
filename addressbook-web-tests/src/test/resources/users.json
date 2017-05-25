@@ -6,7 +6,10 @@
     "nickname": "amalinkovskiy 0",
     "title": "title",
     "address": "add",
-    "group": "test1"
+    "group": "test1",
+    "work": "911",
+    "email": "test@goog.com",
+    "photo": "src/test/resources/300px.png"
   },
   {
     "firstname": "First Name 1",
@@ -15,6 +18,9 @@
     "nickname": "amalinkovskiy 1",
     "title": "title",
     "address": "add",
-    "group": "test1"
+    "group": "test1",
+    "work": "911",
+    "email": "test@goog.com",
+    "photo": "src/test/resources/300px.png"
   }
 ]

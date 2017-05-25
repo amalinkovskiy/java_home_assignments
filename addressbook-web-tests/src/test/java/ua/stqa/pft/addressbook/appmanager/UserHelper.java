@@ -49,7 +49,7 @@ public class UserHelper extends HelperBase {
         attach(By.name("photo"),userData.getPhoto());
 
         if (creation){
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userData.getGroup());
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText("[none]");
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
