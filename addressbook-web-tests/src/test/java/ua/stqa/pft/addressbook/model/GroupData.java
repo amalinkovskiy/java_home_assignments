@@ -6,6 +6,8 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @XStreamAlias("group")
 @Entity
@@ -30,6 +32,9 @@ public class GroupData {
     @Expose
     @Transient
     private  String group;
+
+    @ManyToMany (mappedBy = "groups")
+    private Set<UserData> users = new HashSet<UserData>();
 
     public int getId() {
         return id;
@@ -70,6 +75,10 @@ public class GroupData {
 
     public String getFooter() {
         return footer;
+    }
+
+    public Set<UserData> getUsers() {
+        return users;
     }
 
     @Override

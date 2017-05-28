@@ -30,7 +30,7 @@ public class UserModificationTests extends TestBase {
         if (app.user().all().size() == 0){
             app.user().create(new UserData().withFirstname("Alexander").withMiddlename("B").withLastname("Malinkovskiy").
                     withNickname("amalinkovskiy").withAddress("address").
-                    withHome("home").withFax("fax").withEmail("a@a.a").withGroup("test1").withPhoto(photo), true);
+                    withHome("home").withFax("fax").withEmail("a@a.a")/*.withGroup("test1")*/.withPhoto(photo), true);
         }
     }
 
@@ -46,10 +46,8 @@ public class UserModificationTests extends TestBase {
         app.user().modify(user);
         assertEquals(app.user().count(), before.size());
         Users after = app.db().users();
-        Users beforeUser = before.without(modifiedUser).withAdded(user);
-        assertThat(after, equalTo(beforeUser));
-//        assertThat(after, equalTo(before.without(modifiedUser).withAdded(user)));
-        System.out.println("for debug");
+        assertThat(after, equalTo(before.without(modifiedUser).withAdded(user)));
+
 
     }
 

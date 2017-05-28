@@ -9,6 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import ua.stqa.pft.addressbook.model.GroupData;
+import ua.stqa.pft.addressbook.model.Groups;
 import ua.stqa.pft.addressbook.model.UserData;
 import ua.stqa.pft.addressbook.model.Users;
 
@@ -57,9 +58,10 @@ public class UserCreationTests extends TestBase {
 
         @Test (dataProvider = "validUsersFromJson")
         public void testUserCreation(UserData user) {
+        Groups groups = app.db().groups();
 
         Users before = app.db().users();
-        app.user().create(user);
+        app.user().create(user.inGroup(groups.iterator().next()));
         //assertThat(app.user().count(), equalTo(before.size() + 1));
         Users after = app.db().users();
         assertThat(after, equalTo(
@@ -82,7 +84,7 @@ public class UserCreationTests extends TestBase {
 
         Users before = app.user().all();
         UserData user = new UserData().withFirstname("Alexander'").withMiddlename("B").withLastname("Malinkovskiy")
-                .withNickname("amalinkovskiy").withTitle("title").withAddress("add").withGroup("test1");
+                .withNickname("amalinkovskiy").withTitle("title").withAddress("add")/*.withGroup("test1")*/;
         app.user().create(user);
         assertThat(app.user().count(), equalTo(before.size()));
         Users after = app.user().all();

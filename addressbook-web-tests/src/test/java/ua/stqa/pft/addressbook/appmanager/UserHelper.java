@@ -49,7 +49,10 @@ public class UserHelper extends HelperBase {
         attach(By.name("photo"),userData.getPhoto());
 
         if (creation){
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText("[none]");
+            if (userData.getGroups().size() > 0) {
+                Assert.assertTrue(userData.getGroups().size() == 1);
+                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userData.getGroups().iterator().next().getName());
+            }
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
@@ -142,7 +145,7 @@ public class UserHelper extends HelperBase {
             String allPhones = cells.get(5).getText();
 
             UserData user = new UserData().withId(id).withFirstname(FirstName).withLastname(LastName).
-                    withAddress(address).withGroup("[none]").withAllEmails(allEmails).withAllPhones(allPhones);
+                    withAddress(address)/*.withGroup("[none]")*/.withAllEmails(allEmails).withAllPhones(allPhones);
             userCache.add(user);        }
 
         return new Users(userCache);

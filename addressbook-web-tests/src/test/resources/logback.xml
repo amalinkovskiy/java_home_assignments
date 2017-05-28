@@ -3,7 +3,7 @@
 
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>/logs/test-${bySecond}.log</file>
+        <file>${user.dir}/logs/test-${bySecond}.log</file>
 
         <!-- set immediateFlush to false for much higher logging throughput -->
         <immediateFlush>true</immediateFlush>
