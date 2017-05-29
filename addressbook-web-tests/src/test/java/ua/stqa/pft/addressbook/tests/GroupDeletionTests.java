@@ -16,7 +16,7 @@ public class GroupDeletionTests extends TestBase {
 
         app.goTo().groupPage();
 
-        if (app.group().all().size() == 0){
+        if (app.db().groups().size() == 0){
             app.group().create(new GroupData().withName("testfordel").withFooter("old").withGroup("[none]"));
         }
     }

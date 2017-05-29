@@ -22,12 +22,12 @@ public class UserModificationTests extends TestBase {
     public void ensurePreconditions(){
         app.goTo().groupPage();
         File photo = new File("src/test/resources/300px.png");
-        if (app.group().all().size() == 0){
+        if (app.db().groups().size() == 0){
             app.group().create(new GroupData().withName("test1").withFooter("old").withGroup("[none]"));
         }
 
         app.goTo().usersPage();
-        if (app.user().all().size() == 0){
+        if (app.db().users().size() == 0){
             app.user().create(new UserData().withFirstname("Alexander").withMiddlename("B").withLastname("Malinkovskiy").
                     withNickname("amalinkovskiy").withAddress("address").
                     withHome("home").withFax("fax").withEmail("a@a.a")/*.withGroup("test1")*/.withPhoto(photo), true);

@@ -11,7 +11,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 /*
-TODO: for all tests - preconditions should use database call, not take data from UI
 TODO: for all tests - add ability to use system variables (if user wants to use UI data for verifies)
 TODO: return ability to select group when modify group
 */

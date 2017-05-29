@@ -31,7 +31,7 @@ public class UserCreationTests extends TestBase {
     @BeforeMethod
     public void ensurePreconditions() {
         app.goTo().groupPage();
-        if (! app.group().isThereAGroup()){
+        if (app.db().groups().size() == 0){
             app.group().create(new GroupData().withName("test1").withFooter("old").withGroup("[none]"));
         }
         app.goTo().usersPage();
@@ -90,5 +90,4 @@ public class UserCreationTests extends TestBase {
         Users after = app.user().all();
         assertThat(after, equalTo(before));
     }
-
 }
