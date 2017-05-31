@@ -30,7 +30,7 @@ public class UserModificationTests extends TestBase {
         if (app.db().users().size() == 0){
             app.user().create(new UserData().withFirstname("Alexander").withMiddlename("B").withLastname("Malinkovskiy").
                     withNickname("amalinkovskiy").withAddress("address").
-                    withHome("home").withFax("fax").withEmail("a@a.a")/*.withGroup("test1")*/.withPhoto(photo), true);
+                    withHome("home").withFax("fax").withEmail("a@a.a").withPhoto(photo), true);
         }
     }
 

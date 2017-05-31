@@ -79,7 +79,7 @@ public class UserDataGenerator {
         for (int i=0; i<count;i++){
             users.add(new UserData().withFirstname(String.format("First Name %s",i))
                     .withMiddlename(String.format("Middle %s",i)).withLastname(String.format("Last Name %s",i))
-                    .withNickname(String.format("amalinkovskiy %s",i)).withTitle(String.format("title",i)).withAddress(String.format("add",i))/*.withGroup("test1")*/);
+                    .withNickname(String.format("amalinkovskiy %s",i)).withTitle(String.format("title",i)).withAddress(String.format("add",i)));
         }
 
         return users;

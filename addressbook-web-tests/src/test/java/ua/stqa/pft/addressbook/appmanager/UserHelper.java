@@ -6,10 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
+import ua.stqa.pft.addressbook.model.GroupData;
+import ua.stqa.pft.addressbook.model.Groups;
 import ua.stqa.pft.addressbook.model.UserData;
 import ua.stqa.pft.addressbook.model.Users;
 
 import java.util.List;
+
+
 
 /**
  * Created by amalinkovskiy on 4/23/2017.
@@ -145,7 +149,7 @@ public class UserHelper extends HelperBase {
             String allPhones = cells.get(5).getText();
 
             UserData user = new UserData().withId(id).withFirstname(FirstName).withLastname(LastName).
-                    withAddress(address)/*.withGroup("[none]")*/.withAllEmails(allEmails).withAllPhones(allPhones);
+                    withAddress(address).withAllEmails(allEmails).withAllPhones(allPhones);
             userCache.add(user);        }
 
         return new Users(userCache);
@@ -180,5 +184,84 @@ public class UserHelper extends HelperBase {
         viewParticularUserById(user.getId());
         String content = wd.findElement(By.id("content")).getText();
         return content;
+    }
+
+    public void toGroup(UserData user, GroupData group) {
+        returnToUsersPage();
+        selectUserById(user.getId());
+        selectGroupById(new Integer(group.getId()).toString());
+        submitSelectedGroup();
+    }
+
+    private void submitSelectedGroup() {
+        click(By.name("add"));
+
+    }
+
+    private void selectGroupById(String id) {
+
+        new Select(wd.findElement(By.name("to_group"))).selectByValue(id);
+    }
+
+    public UserData userWithFreeGroup (Users users, Groups groups) {
+
+        for (UserData user : users) {
+            Groups tempGroups = user.getGroups();
+            if ((! groups.equals(tempGroups))){
+                        return user;
+            }
+        }
+        return null;
+    }
+
+    public UserData userInGroups(Users before, Groups groups) {
+
+        for (UserData user : before) {
+            Groups tempGroups = user.getGroups();
+            if (tempGroups.size() > 0){
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public GroupData getGroupToRemove (UserData user){
+        Groups groups = user.getGroups();
+        return groups.iterator().next();
+    }
+
+    public void removeFromGroup (UserData user, GroupData group) {
+        returnToUsersPage();
+        selectUsersInGroupById(new Integer(group.getId()).toString());
+        selectUserById(user.getId());
+        removeUserFromGroup();
+    }
+
+    private void removeUserFromGroup() {
+        click(By.name("remove"));
+    }
+
+    private void selectUsersInGroupById(String id) {
+        new Select(wd.findElement(By.name("group"))).selectByValue(id);
+    }
+
+    public GroupData getAvailGroup(UserData freeGroupUser, Groups groups) {
+        Groups userGroups = freeGroupUser.getGroups();
+        for (GroupData group: groups) {
+            if (! userGroups.contains(group)){
+                return group;
+            }
+
+        }
+        return null;
+    }
+
+    public Groups getGroups(Users users, UserData user) {
+        for (UserData userData: users) {
+            if (userData.getId() == user.getId()){
+                return userData.getGroups();
+            }
+        }
+        return user.getGroups();
     }
 }

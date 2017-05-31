@@ -84,7 +84,7 @@ public class UserCreationTests extends TestBase {
 
         Users before = app.user().all();
         UserData user = new UserData().withFirstname("Alexander'").withMiddlename("B").withLastname("Malinkovskiy")
-                .withNickname("amalinkovskiy").withTitle("title").withAddress("add")/*.withGroup("test1")*/;
+                .withNickname("amalinkovskiy").withTitle("title").withAddress("add");
         app.user().create(user);
         assertThat(app.user().count(), equalTo(before.size()));
         Users after = app.user().all();
