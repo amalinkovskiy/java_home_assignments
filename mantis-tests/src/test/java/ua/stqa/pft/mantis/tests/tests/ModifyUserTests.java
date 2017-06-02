@@ -5,6 +5,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.lanwen.verbalregex.VerbalExpression;
 import ua.stqa.pft.mantis.tests.model.MailMessage;
+import ua.stqa.pft.mantis.tests.model.User;
+import ua.stqa.pft.mantis.tests.model.Users;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -15,7 +17,7 @@ import static org.testng.Assert.assertTrue;
 /**
  * Created by amalinkovskiy on 6/1/2017.
  */
-public class RegistrationTests extends TestBase{
+public class ModifyUserTests extends TestBase{
 
     @BeforeMethod
     public void startMailServer(){
@@ -24,17 +26,20 @@ public class RegistrationTests extends TestBase{
 
 
     @Test
-    public void testRegistration() throws IOException, MessagingException {
-        Long now = System.currentTimeMillis();
-        String email = String.format("user1%s@localhost.localdomain", now);
-        String user = "user1" + now;
-        String password = "password";
-        app.registration().start(user, email);
-        List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
-        String confirmationLink = findConfirmationLink(mailMessages, email);
+    public void changePasswordTest() throws IOException, MessagingException {
 
-        app.registration().finish(confirmationLink, password);
-        assertTrue(app.newSession().login(user,password));
+        Users users = app.db().users();
+        String userNameToModify = "usertomodify";
+        User user = users.stream().filter((u) -> u.getUsername().equals(userNameToModify))
+                .findFirst().get().withPassword("usertomodify");
+
+        app.modification().start(user);
+        List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
+        String confirmationLink = findConfirmationLink(mailMessages, user.getEmail());
+
+
+        app.modification().finish(confirmationLink, user.getPassword());
+        assertTrue(app.newSession().login(user.getUsername(),user.getPassword()));
     }
 
     private String findConfirmationLink(List<MailMessage> mailMessages, String email) {
@@ -43,7 +48,7 @@ public class RegistrationTests extends TestBase{
         return regex.getText(mailMessage.text);
     }
 
-    @AfterMethod (alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void stopMailServer(){
         app.mail().stop();
     }

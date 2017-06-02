@@ -1,11 +1,9 @@
 package ua.stqa.pft.mantis.tests.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
-import java.io.File;
+
 
 /**
  * Created by amalinkovskiy on 4/23/2017.
@@ -34,29 +32,18 @@ public class HelperBase {
         }
     }
 
-    protected void attach(By locator, File file) {
+    protected void login(String operation){
 
-        if (file != null){
-                wd.findElement(locator).sendKeys(file.getAbsolutePath());
+        String page = "login_page.php";
+        if(operation.equals("ModifyUser")){
+            page = "/manage_user_page.php";
+        }
+        wd.get(app.getProperty("web.baseURL") + page);
+        if(operation.equals("ModifyUser")){
+            type(By.name("username"), app.getProperty("admin"));
+            type(By.name("password"), app.getProperty("adminPassword"));
+            click(By.cssSelector("input[value='Login']"));
         }
     }
 
-    public boolean isAlertPresent() {
-        try {
-            wd.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
-
-    protected boolean isElementPresent(By locator) {
-        try {
-            wd.findElement(locator);
-            return true;
-        } catch (NoSuchElementException ex){
-            return false;
-        }
-
-    }
 }
