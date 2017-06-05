@@ -8,10 +8,12 @@ public class Issue {
     private String summary;
     private String desccription;
     private Project project;
+    private String status;
 
     public String getName() {
         return name;
     }
+
 
     public Issue withName(String name) {
         this.name = name;
@@ -19,6 +21,10 @@ public class Issue {
     }
 
     private String name;
+
+    public String getStatus() {
+        return status;
+    }
 
     public int getId() {
         return id;
@@ -55,4 +61,23 @@ public class Issue {
         this.project = project;
         return this;
     }
+
+    public Issue withStatus(String status) {
+        this.status = status;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Issue{" +
+                "id=" + id +
+                ", summary='" + summary + '\'' +
+                ", desccription='" + desccription + '\'' +
+                ", project=" + project +
+                ", status='" + status + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+
 }
