@@ -24,15 +24,6 @@ public class RestHelper {
         this.app = app;
     }
 
-    public Issue getIssue(int issueId) throws IOException {
-        Set<Issue> issues = getIssues();
-
-        Issue issue = issues.stream().filter((i) -> i.getId() == issueId)
-                .findFirst().get();
-
-        return issue;
-    }
-
 
     public Set<Issue> getIssues() throws IOException {
         String json = getExec().execute(Request.Get("http://demo.bugify.com/api/issues.json"))
