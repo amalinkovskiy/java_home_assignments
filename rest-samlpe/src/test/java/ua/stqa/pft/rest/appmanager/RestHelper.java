@@ -1,53 +1,55 @@
-package ua.stqa.pft.rest;
+package ua.stqa.pft.rest.appmanager;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+
 import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
-
 import org.apache.http.message.BasicNameValuePair;
-import org.testng.annotations.Test;
+import ua.stqa.pft.rest.model.Issue;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Set;
 
-
-
-import static org.testng.Assert.assertEquals;
-
 /**
- * Created by amalinkovskiy on 6/5/2017.
+ * Created by amalinkovskiy on 6/6/2017.
  */
-public class RestTests {
-    @Test
-    public void testCreateIssue() throws IOException {
-        Set<Issue> oldIssues = getIssues();
-        Issue newIssue = new Issue().withSubject("Test issue").withDescription("New Issue");
-        int issueId = createIssue(newIssue);
-        Set<Issue> newIssues = getIssues();
-        oldIssues.add(newIssue.withId(issueId));
-        assertEquals(newIssues, oldIssues);
+public class RestHelper {
+
+    private final ApplicationManager app;
+
+    public RestHelper(ApplicationManager app) {
+        this.app = app;
     }
 
-    private Set<Issue> getIssues() throws IOException {
+    public Issue getIssue(int issueId) throws IOException {
+        Set<Issue> issues = getIssues();
+
+        Issue issue = issues.stream().filter((i) -> i.getId() == issueId)
+                .findFirst().get();
+
+        return issue;
+    }
+
+
+    public Set<Issue> getIssues() throws IOException {
         String json = getExec().execute(Request.Get("http://demo.bugify.com/api/issues.json"))
                 .returnContent().asString();
         JsonElement parsed = new JsonParser().parse(json);
         JsonElement issues = parsed.getAsJsonObject().get("issues");
 
+
         return new Gson().fromJson(issues, new TypeToken<Set<Issue>>(){}.getType());
 
     }
 
-    private Executor getExec() {
+    public Executor getExec() {
         return Executor.newInstance().auth("LSGjeU4yP1X493ud1hNniA==","");
     }
 
-    private int createIssue(Issue newIssue) throws IOException {
+    public int createIssue(Issue newIssue) throws IOException {
 
         String json = getExec().execute(Request
                 .Post("http://demo.bugify.com/api/issues.json")

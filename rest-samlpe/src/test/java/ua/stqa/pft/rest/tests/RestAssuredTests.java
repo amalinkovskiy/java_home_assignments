@@ -1,15 +1,13 @@
-package ua.stqa.pft.rest;
+package ua.stqa.pft.rest.tests;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.jayway.restassured.RestAssured;
-import org.apache.http.client.fluent.Executor;
-import org.apache.http.client.fluent.Request;
-import org.apache.http.message.BasicNameValuePair;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import ua.stqa.pft.rest.model.Issue;
 
 
 import java.io.IOException;
@@ -37,7 +35,6 @@ public class RestAssuredTests {
     }
 
     private Set<Issue> getIssues() throws IOException {
-        //String json = getExec().execute(Request.Get("http://demo.bugify.com/api/issues.json")).returnContent().asString();
 
 
         String json = RestAssured
