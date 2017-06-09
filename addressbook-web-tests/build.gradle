@@ -52,3 +52,7 @@ task testUsers(type: Test) {
         systemProperty 'verifyUI', "${verifyUI}"
     }
 }
+
+test {
+     useTestNG()
+}

@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="SandboxRegressionSuite" verbose="1" >
+    <test name="Sandbox">
+        <classes>
+            <class name="ua.stqa.pft.sandbox.EquationTests" />
+            <class name="ua.stqa.pft.sandbox.PrimeTests" />
+            <class name="ua.stqa.pft.sandbox.SquareTests" />
+        </classes>
+    </test>
+</suite>
