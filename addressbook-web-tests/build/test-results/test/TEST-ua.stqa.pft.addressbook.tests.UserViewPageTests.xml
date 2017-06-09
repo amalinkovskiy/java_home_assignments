@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ua.stqa.pft.addressbook.tests.UserViewPageTests" tests="1" skipped="0" failures="1" errors="0" timestamp="2017-05-19T13:04:30" hostname="amalinkovskiypc" time="1.601">
+<testsuite name="ua.stqa.pft.addressbook.tests.UserViewPageTests" tests="1" skipped="0" failures="1" errors="0" timestamp="2017-06-09T11:59:35" hostname="amalinkovskiypc" time="1.526">
   <properties/>
-  <testcase name="testUserViewPage" classname="ua.stqa.pft.addressbook.tests.UserViewPageTests" time="1.601">
-    <failure message="java.lang.AssertionError: &#10;Expected: &quot;Sherlock Middle 1 Holmes\namalinkovskiy 1\ntitle\nBaker street&quot;&#10;     but: was &quot;Sherlock Middle 1 Holmes\namalinkovskiy 1\ntitle\nBaker street\n\n\nMember of: test1&quot;" type="java.lang.AssertionError">java.lang.AssertionError: 
-Expected: &quot;Sherlock Middle 1 Holmes\namalinkovskiy 1\ntitle\nBaker street&quot;
-     but: was &quot;Sherlock Middle 1 Holmes\namalinkovskiy 1\ntitle\nBaker street\n\n\nMember of: test1&quot;
+  <testcase name="testUserViewPage" classname="ua.stqa.pft.addressbook.tests.UserViewPageTests" time="1.526">
+    <failure message="java.lang.AssertionError: &#10;Expected: &quot;First Name 0 Middle 0 Last Name 0\namalinkovskiy 0\ntitle\nadd\n\nW: 911\n\ntest@goog.com&quot;&#10;     but: was &quot;First Name 0 Middle 0 Last Name 0\namalinkovskiy 0\n\ntitle\nadd\n\nW: 911\n\ntest@goog.com\n\n\nMember of: new1&quot;" type="java.lang.AssertionError">java.lang.AssertionError: 
+Expected: &quot;First Name 0 Middle 0 Last Name 0\namalinkovskiy 0\ntitle\nadd\n\nW: 911\n\ntest@goog.com&quot;
+     but: was &quot;First Name 0 Middle 0 Last Name 0\namalinkovskiy 0\n\ntitle\nadd\n\nW: 911\n\ntest@goog.com\n\n\nMember of: new1&quot;
 	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:18)
 	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:6)
 	at ua.stqa.pft.addressbook.tests.UserViewPageTests.testUserViewPage(UserViewPageTests.java:26)

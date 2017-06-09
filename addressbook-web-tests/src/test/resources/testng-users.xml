@@ -3,10 +3,7 @@
 <suite name="FirstRegressionSuite" verbose="1" >
     <test name="Users">
         <classes>
-            <class name="ua.stqa.pft.addressbook.tests.UserDeletionTests" />
-            <class name="ua.stqa.pft.addressbook.tests.UserModificationTests" />
-            <class name="ua.stqa.pft.addressbook.tests.UserCreationTests" />
-            <class name="ua.stqa.pft.addressbook.tests.UserGroupAddRemoveTests" />
+
         </classes>
     </test>
 </suite>
