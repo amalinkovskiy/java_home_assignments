@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ua.stqa.pft.addressbook.tests.UserEmailTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-05-19T13:04:21" hostname="amalinkovskiypc" time="1.176">
+  <properties/>
+  <testcase name="testUserEmails" classname="ua.stqa.pft.addressbook.tests.UserEmailTests" time="1.176"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

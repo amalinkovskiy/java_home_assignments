@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ua.stqa.pft.addressbook.tests.UserCreationTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-05-19T13:07:02" hostname="amalinkovskiypc" time="35.412">
+  <properties/>
+  <testcase name="testUserCreation[0](UserData{id='2147483647', firstname='First Name 0', lastname='Last Name 0', address='add'})" classname="ua.stqa.pft.addressbook.tests.UserCreationTests" time="16.893"/>
+  <testcase name="testUserCreation[1](UserData{id='2147483647', firstname='First Name 1', lastname='Last Name 1', address='add'})" classname="ua.stqa.pft.addressbook.tests.UserCreationTests" time="8.333"/>
+  <testcase name="testUserCreation[2](UserData{id='2147483647', firstname='First Name 2', lastname='Last Name 2', address='add'})" classname="ua.stqa.pft.addressbook.tests.UserCreationTests" time="8.625"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

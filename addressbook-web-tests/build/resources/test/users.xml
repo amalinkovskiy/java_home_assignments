@@ -1,0 +1,29 @@
+<list>
+  <user>
+    <firstname>First Name 0</firstname>
+    <middlename>Middle 0</middlename>
+    <lastname>Last Name 0</lastname>
+    <nickname>amalinkovskiy 0</nickname>
+    <title>title</title>
+    <address>add</address>
+    <group>test1</group>
+  </user>
+  <user>
+    <firstname>First Name 1</firstname>
+    <middlename>Middle 1</middlename>
+    <lastname>Last Name 1</lastname>
+    <nickname>amalinkovskiy 1</nickname>
+    <title>title</title>
+    <address>add</address>
+    <group>test1</group>
+  </user>
+  <user>
+    <firstname>First Name 2</firstname>
+    <middlename>Middle 2</middlename>
+    <lastname>Last Name 2</lastname>
+    <nickname>amalinkovskiy 2</nickname>
+    <title>title</title>
+    <address>add</address>
+    <group>test1</group>
+  </user>
+</list>

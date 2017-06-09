@@ -1,0 +1,26 @@
+[
+  {
+    "firstname": "First Name 0",
+    "middlename": "Middle 0",
+    "lastname": "Last Name 0",
+    "nickname": "amalinkovskiy 0",
+    "title": "title",
+    "address": "add",
+    "group": "test1",
+    "work": "911",
+    "email": "test@goog.com",
+    "photo": "src/test/resources/300px.png"
+  },
+  {
+    "firstname": "First Name 1",
+    "middlename": "Middle 1",
+    "lastname": "Last Name 1",
+    "nickname": "amalinkovskiy 1",
+    "title": "title",
+    "address": "add",
+    "group": "test1",
+    "work": "911",
+    "email": "test@goog.com",
+    "photo": "src/test/resources/300px.png"
+  }
+]
